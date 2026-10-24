@@ -11,6 +11,7 @@ import app.lawnchair.theme.color.tokens.AllAppsTabColors
 import app.lawnchair.theme.color.tokens.ColorTokens
 import com.android.launcher3.R
 
+// Modified for Balance: softly lit glass on the existing widget sheet shapes.
 object DrawableTokens {
 
     @JvmField
@@ -28,6 +29,7 @@ object DrawableTokens {
     @JvmField
     val BgWidgetsFullSheet = ResourceDrawableToken<GradientDrawable>(R.drawable.bg_widgets_full_sheet)
         .setColor(ColorTokens.ColorBackground)
+        .withBalanceGlass()
 
     @JvmField
     val BgWidgetsSearchbox = ResourceDrawableToken<GradientDrawable>(R.drawable.bg_widgets_searchbox)
@@ -69,6 +71,7 @@ object DrawableTokens {
     @JvmField
     val WidgetsBottomSheetBackground = ResourceDrawableToken<GradientDrawable>(R.drawable.bg_rounded_corner_bottom_sheet)
         .setColor(ColorTokens.Surface)
+        .withBalanceGlass()
 
     @JvmField
     val WidgetsListBackground = NewDrawable { context, scheme, uiColorMode ->

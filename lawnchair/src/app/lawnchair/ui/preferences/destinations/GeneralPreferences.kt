@@ -166,6 +166,12 @@ fun GeneralPreferences(modifier: Modifier = Modifier) {
 
         PreferenceGroup(heading = stringResource(id = R.string.colors)) {
             ThemePreference()
+            // Balance surface styling can be tuned independently of icon and accent preferences.
+            SwitchPreference(
+                adapter = prefs.balanceGlassTheme.getAdapter(),
+                label = stringResource(id = R.string.balance_glass_theme_label),
+                description = stringResource(id = R.string.balance_glass_theme_description),
+            )
             ColorPreference(preference = prefs2.accentColor)
             ExpandAndShrink(visible = showColorStyle) {
                 ColorStylePreference(prefs2.colorStyle.getAdapter())

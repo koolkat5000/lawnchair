@@ -1,0 +1,35 @@
+name: Balance theme preview
+
+on:
+  push:
+    branches: [balance-theme]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: balance-theme-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: recursive
+      - uses: actions/setup-java@v6
+        with:
+          distribution: zulu
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v6
+      - name: Check formatting and build preview
+        run: ./gradlew spotlessCheck assembleLawnWithQuickstepGithubDebug
+      - name: Upload preview APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: Balance-Lawnchair-preview
+          path: build/outputs/apk/lawnWithQuickstepGithub/debug/*.apk
+          if-no-files-found: error

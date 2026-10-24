@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="balance_glass_theme_label">Balance glass</string>
+    <string name="balance_glass_theme_description">Soft glass surfaces in Balance light and dark colours</string>
+</resources>

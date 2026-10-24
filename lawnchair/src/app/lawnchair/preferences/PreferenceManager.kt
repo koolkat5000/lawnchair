@@ -113,7 +113,9 @@ class PreferenceManager @Inject constructor(
     val workspaceIncreaseMaxGridSize = BoolPref("pref_workspace_increase_max_grid_size", false)
     val folderRows = IdpIntPref("pref_folderRows", { numFolderRows[INDEX_DEFAULT] }, reloadGrid)
 
-    val drawerOpacity = FloatPref("pref_drawerOpacity", .5f, recreate)
+    // Balance defaults affect new installations only; existing opacity choices are retained.
+    val balanceGlassTheme = BoolPref("pref_balanceGlassTheme", true, recreate)
+    val drawerOpacity = FloatPref("pref_drawerOpacity", .93f, recreate)
     val coloredBackgroundLightness = FloatPref("pref_coloredBackgroundLightness", 1F)
     val feedProvider = StringPref("pref_feedProvider", "")
     val ignoreFeedWhitelist = BoolPref("pref_ignoreFeedWhitelist", false)

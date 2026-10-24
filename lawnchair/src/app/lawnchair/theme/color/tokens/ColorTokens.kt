@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
+// Modified for Balance: optional surface colours, with Lawnchair accents and text retained.
 @Suppress("MemberVisibilityCanBePrivate", "unused")
 object ColorTokens {
     val Neutral1_0 = SwatchColorToken(Swatch.Neutral1, Shade.S0)
@@ -69,6 +70,7 @@ object ColorTokens {
     val SurfaceDark = Neutral1_500.setLStar(6.0)
 
     @JvmField val Surface = DayNightColorToken(SurfaceLight, SurfaceDark)
+        .withBalanceSurface(BalancePalette.Surface)
 
     val SurfaceVariantLight = Neutral2_100
     val SurfaceVariantDark = Neutral1_700
@@ -80,10 +82,13 @@ object ColorTokens {
     @JvmField val ColorAccent = DayNightColorToken(Accent1_600, Accent1_100)
 
     @JvmField val ColorBackground = DayNightColorToken(Neutral1_50, Neutral1_900)
+        .withBalanceSurface(BalancePalette.Surface)
 
     @JvmField val ColorBackgroundFloating = DayNightColorToken(Neutral2_50, Neutral2_900)
+        .withBalanceSurface(BalancePalette.Glass)
 
     @JvmField val ColorPrimary = DayNightColorToken(Neutral1_50, Neutral1_900)
+        .withBalanceSurface(BalancePalette.Raised)
 
     @JvmField val TextColorPrimary = DayNightColorToken(Neutral1_900, Neutral1_50)
 
@@ -92,8 +97,10 @@ object ColorTokens {
     @JvmField val TextColorSecondary = DayNightColorToken(StaticColorToken(0xde000000), Neutral2_200)
 
     @JvmField val AllAppsHeaderProtectionColor = DayNightColorToken(SurfaceContainerHighest, SurfaceContainerLow)
+        .withBalanceSurface(BalancePalette.Surface)
 
     @JvmField val AllAppsScrimColor = StaticColorToken(0x404040).setAlpha(.40f)
+        .withBalanceSurface(BalancePalette.Surface)
 
     @JvmField val AllAppsTabBackground = DayNightColorToken(Neutral1_100, Neutral1_800.setLStar(22.0))
 
@@ -132,12 +139,14 @@ object ColorTokens {
         }
 
     @JvmField val SearchboxHighlight = DayNightColorToken(Neutral2_600.setLStar(98.0), Neutral1_800)
+        .withBalanceSurface(BalancePalette.Field)
 
     @JvmField val SearchboxHighlightBlur = SearchboxHighlight.setAlpha(.54f)
 
     @JvmField val DotColor = Accent3_200
 
     @JvmField val FolderBackgroundColor = DayNightColorToken(Neutral1_50.setLStar(94.0), Neutral2_900.setLStar(12.0))
+        .withBalanceSurface(BalancePalette.Surface)
 
     @JvmField val FolderIconBorderColor = StaticColorToken(0xFFF5F5F5) // Material Grey 100
 
@@ -146,16 +155,22 @@ object ColorTokens {
     @JvmField val FolderPreviewColor = DayNightColorToken(Accent2_200, Neutral1_900.setLStar(12.0))
 
     @JvmField val PopupColorPrimary = DayNightColorToken(Accent2_50, Neutral2_800)
+        .withBalanceSurface(BalancePalette.Raised)
 
     @JvmField val PopupColorSecondary = DayNightColorToken(Neutral2_100, Neutral1_900)
+        .withBalanceSurface(BalancePalette.Field)
 
     @JvmField val PopupColorTertiary = DayNightColorToken(Neutral2_300, Neutral2_700)
+        .withBalanceSurface(BalancePalette.Field)
 
     @JvmField val PopupShadeFirst = DayNightColorToken(PopupColorPrimary.setLStar(98.0), PopupColorPrimary.setLStar(20.0))
+        .withBalanceSurface(BalancePalette.Glass)
 
     @JvmField val PopupShadeSecond = DayNightColorToken(PopupColorPrimary.setLStar(95.0), PopupColorPrimary.setLStar(15.0))
+        .withBalanceSurface(BalancePalette.Raised.setAlpha(.93f))
 
     @JvmField val PopupShadeThird = DayNightColorToken(PopupColorPrimary.setLStar(90.0), PopupColorPrimary.setLStar(10.0))
+        .withBalanceSurface(BalancePalette.Field.setAlpha(.93f))
 
     @JvmField val PopupArrow = PopupShadeFirst
 

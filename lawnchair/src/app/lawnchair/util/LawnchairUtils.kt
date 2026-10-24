@@ -52,6 +52,7 @@ import app.lawnchair.preferences.PreferenceManager
 import app.lawnchair.preferences2.PreferenceManager2
 import app.lawnchair.preferences2.firstCached
 import app.lawnchair.theme.color.ColorOption
+import app.lawnchair.theme.color.tokens.BalancePalette
 import app.lawnchair.theme.color.tokens.ColorTokens
 import com.android.launcher3.BaseActivity
 import com.android.launcher3.BuildConfig
@@ -225,7 +226,13 @@ private fun getAllAppsBaseColor(context: Context, defaultColor: Int): Int {
     val prefs2 = PreferenceManager2.getInstance(context)
     val colorOptions: ColorOption = prefs2.appDrawerBackgroundColor.firstCached()
     val color = colorOptions.colorPreferenceEntry.lightColor.invoke(context)
-    val baseColor = if (color != 0) color else defaultColor
+    // Balance supplies only the default; explicit drawer colours keep their existing priority.
+    val themedDefault = if (PreferenceManager.getInstance(context).balanceGlassTheme.get()) {
+        BalancePalette.Surface.resolveColor(context)
+    } else {
+        defaultColor
+    }
+    val baseColor = if (color != 0) color else themedDefault
     return ColorUtils.setAlphaComponent(baseColor, 255)
 }
 
