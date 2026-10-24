@@ -236,6 +236,16 @@ private fun getAllAppsBaseColor(context: Context, defaultColor: Int): Int {
     return ColorUtils.setAlphaComponent(baseColor, 255)
 }
 
+/** Balance's full-screen drawer uses the same colour and opacity as the sheet variant. */
+fun getAllAppsScrimColor(context: Context): Int {
+    val defaultColor = ColorTokens.AllAppsScrimColor.resolveColor(context)
+    return if (PreferenceManager.getInstance(context).balanceGlassTheme.get()) {
+        getAllAppsBackgroundColor(context, defaultColor)
+    } else {
+        defaultColor
+    }
+}
+
 /** Apply Lawnchair custom allapps opacity and colour to the provided colour */
 fun getAllAppsBackgroundColor(context: Context, defaultColor: Int): Int {
     val prefs = PreferenceManager.getInstance(context)

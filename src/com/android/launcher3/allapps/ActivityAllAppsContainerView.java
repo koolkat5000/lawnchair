@@ -239,7 +239,8 @@ public class ActivityAllAppsContainerView<T extends Context & ActivityContext>
         pref2 = PreferenceManager2.getInstance(mActivityContext);
         pref = PreferenceManager.getInstance(mActivityContext);
         
-        mScrimColor = ColorTokens.AllAppsScrimColor.resolveColor(context);
+        // Balance: keep full-screen header protection in sync with the drawer glass.
+        mScrimColor = LawnchairUtilsKt.getAllAppsScrimColor(context);
         mHeaderThreshold = getResources().getDimensionPixelSize(
                 R.dimen.dynamic_grid_cell_border_spacing);
         mHeaderProtectionColor = ColorTokens.AllAppsHeaderProtectionColor.resolveColor(context);

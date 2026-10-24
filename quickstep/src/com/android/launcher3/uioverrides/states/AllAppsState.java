@@ -210,8 +210,8 @@ public class AllAppsState extends LauncherState {
     public ScrimColors getWorkspaceScrimColor(Launcher launcher) {
         int backgroundColor;
         if (!launcher.getDeviceProfile().shouldShowAllAppsOnSheet()) {
-            // Always use an opaque scrim if there's no sheet.
-            backgroundColor = ColorTokens.AllAppsScrimColor.resolveColor(launcher);
+            // Balance: use the configured glass colour and opacity for a full-screen drawer.
+            backgroundColor = LawnchairUtilsKt.getAllAppsScrimColor(launcher);
         } else if (!Flags.allAppsBlur()) {
             // If there's a sheet but no blur, use the old scrim color.
             backgroundColor = LawnchairUtilsKt.getAllAppsBackgroundColor(launcher, 

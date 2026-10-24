@@ -24,6 +24,19 @@ Icons, grid sizes, widgets, long-press actions, swipe gestures, drawer scrolling
 and scrollbar handling retain Lawnchair's implementation. The original Balance
 Launcher's custom scroll mechanics have not been ported.
 
+## Theme integration
+
+Keep Balance inside Lawnchair's existing theme token and drawable system.
+Surface colours resolve through `UiColorMode`, including Lawnchair's explicit
+light/dark choice and its system-following setting. Android/Material dynamic
+accent colours, text tokens, icon theming and the upstream blur controls remain
+available. Custom drawer colours override the Balance default.
+
+Avoid a parallel theme engine or custom rendering and gesture stack. When
+upstream adds theme capabilities, prefer adapting these small surface overrides
+to those capabilities rather than replacing the framework. Review these
+integration points when merging future `16-dev` updates.
+
 ## Preview build
 
 The **Balance theme preview** Actions workflow checks Kotlin formatting and
